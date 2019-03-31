@@ -31,8 +31,8 @@ public class MyFirebaseMessaging  extends FirebaseMessagingService {
 
         NotificationCompat.Builder builder=new NotificationCompat.Builder(this)
                 .setSmallIcon(R.mipmap.ic_launcher_round)
-                .setContentTitle("The Smart Guardian")
-                .setContentText("Your son is in school")
+                .setContentTitle(notification.getTitle())
+                .setContentText(notification.getBody())
                 .setAutoCancel(true)
                 .setSound(defaultUri)
                 .setContentIntent(pendingIntent)

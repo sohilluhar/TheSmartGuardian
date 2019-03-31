@@ -94,6 +94,7 @@ public class Home extends AppCompatActivity {
                         Common.currentMessage = m;
                         Log.d("message", Common.currentMessage.getMessage());
                         setmsg();
+                        updateToken(FirebaseInstanceId.getInstance().getToken());
                     }
                 }
 
@@ -103,7 +104,7 @@ public class Home extends AppCompatActivity {
                 }
             });
 
-            updateToken(FirebaseInstanceId.getInstance().getToken());
+
         } else {
             Toast.makeText(this, "Please check your internet connection! ", Toast.LENGTH_SHORT).show();
         }
@@ -116,7 +117,7 @@ public class Home extends AppCompatActivity {
         FirebaseDatabase db=FirebaseDatabase.getInstance();
         DatabaseReference tokens=db.getReference("Tokens");
         Token data=new Token(token,false);
-        tokens.child(Common.currentParent.getPhone()).setValue(data);
+        tokens.child(Common.currentStudent.getId()).setValue(data);
     }
 
     void setmsg(){
